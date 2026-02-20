@@ -1,4 +1,3 @@
-# monitoring/argo-application.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -7,13 +6,13 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/iescaleira/k3s.git'
-    targetRevision: main
-    path: monitoring
+    repoURL: https://prometheus-community.github.io/helm-charts
+    chart: kube-prometheus-stack
+    targetRevision: 58.0.0
     helm:
+      releaseName: kube-prometheus
       valueFiles:
         - values.yaml
-      releaseName: kube-prometheus
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
