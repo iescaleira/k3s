@@ -6,12 +6,16 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/iescaleira/k3s.git
-    targetRevision: main
-    path: monitoring   # folder with Helm chart (Chart.yaml)
+    repoURL: https://prometheus-community.github.io/helm-charts
+    chart: kube-prometheus-stack
+    targetRevision: 58.2.1
     helm:
-      valueFiles:
-        - values.yaml  # your Helm values file
+      values: |
+        grafana:
+          adminPassword: admin123
+          service:
+            type: NodePort
+            nodePort: 30000
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
