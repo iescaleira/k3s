@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/iescaleira/k3s.git
     targetRevision: main
-    path: k3s/apps
+    path: apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
