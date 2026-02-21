@@ -1,0 +1,26 @@
+kube-prometheus-stack:
+  grafana:
+    adminPassword: admin123
+    service:
+      type: NodePort
+      nodePort: 30000
+    resources:
+      requests:
+        cpu: 50m
+        memory: 128Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
+
+  prometheus:
+    prometheusSpec:
+      retention: 24h
+      scrapeInterval: 60s
+      evaluationInterval: 60s
+      resources:
+        requests:
+          cpu: 100m
+          memory: 512Mi
+        limits:
+          cpu: 500m
+          memory: 1Gi
