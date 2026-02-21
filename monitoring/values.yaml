@@ -1,0 +1,40 @@
+# Namespace where Prometheus and Grafana will be deployed
+namespace: monitoring
+
+# Prometheus Operator configuration
+prometheusOperator:
+  createCustomResource: true
+
+# Prometheus configuration
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelector: {}
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: 250m
+      limits:
+        memory: 512Mi
+        cpu: 500m
+
+# Grafana configuration
+grafana:
+  enabled: true
+  adminUser: admin
+  adminPassword: admin123
+  service:
+    type: NodePort
+    nodePort: 30000
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 100m
+    limits:
+      memory: 256Mi
+      cpu: 200m
+  ingress:
+    enabled: false
+
+# Alertmanager configuration
+alertmanager:
+  enabled: true
