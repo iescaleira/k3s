@@ -10,7 +10,7 @@ spec:
     targetRevision: main
     path: monitoring   # folder with Helm chart (Chart.yaml)
     helm:
-      valuesFiles:
+      valueFiles:
         - values.yaml  # your Helm values file
   destination:
     server: https://kubernetes.default.svc
